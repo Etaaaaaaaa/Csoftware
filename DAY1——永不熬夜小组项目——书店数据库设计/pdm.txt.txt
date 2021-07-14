@@ -1,0 +1,176 @@
+表结构：
+一共有5个表：book表、bookorder表、order表、discount表、customer表
+
+book表：
+book_id			int
+book_name		varchar(45)
+book_kind 		varchar(45)
+book_price		double
+
+bookorder表：
+book_id			int
+order_id 			varchar(45)
+number			int
+
+order表：
+order_id 			int
+order_time 		varchar(45)
+customer_id		int
+
+discount表：
+book_id			int
+discountRate		double
+
+customer表：
+customer_id		int
+customer_name		varchar(45)
+customer_address		varchar(45)
+customer_telephone	varchar(45)
+
+SQL语句：
+建立的表
+drop table if exists bookorder;
+drop table if exists book;
+drop table if exists orders;
+drop table if exists discount;
+drop table if exists customer;
+
+create table if not exists bookorder
+	(`book_id` INT not null,
+	`order_id` int not null,
+	`book_number` INT NULL DEFAULT NULL,
+	PRIMARY KEY (`book_id`, `order_id`)
+	);
+    
+CREATE TABLE IF NOT EXISTS `customer` (
+  `customer_id` int not null,
+  `customer_name` VARCHAR(45) NULL DEFAULT NULL,
+  `customer_address` VARCHAR(45) NULL DEFAULT NULL,
+  `customer_telephone` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`customer_id`)
+  );
+  
+  CREATE TABLE IF NOT EXISTS `discount` (
+  `book_id` int not null,
+  `discountRate` DOUBLE NULL DEFAULT NULL,
+  PRIMARY KEY (`book_id`));
+  
+  CREATE TABLE IF NOT EXISTS `orders` (
+  `order_id` int not null,
+  `order_time` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`order_id`));
+  
+  CREATE TABLE IF NOT EXISTS `book` (
+  `book_id` int not null,
+  `book_name` VARCHAR(45) NULL,
+  `book_kind` VARCHAR(45) NULL,
+  `book_price` double NOT NULL,
+  primary key(`book_id`)
+);
+
+插入数据
+insert into bookorder(book_id,order_id,book_number) values(1,2,3);
+insert into customer(customer_id,customer_name,customer_address,customer_telephone) values(100,'张三','南开区','12345678910');
+insert into discount(book_id,discountRate) values(001,0.9);
+insert into orders(order_id,order_time) values(002,'2021.7.2');
+insert into book(book_id,book_name,book_kind,book_price) values(12093,'大学物理','教材',40.00);
+
+测试数据集：
+书1：
+书名-大学物理
+种类-教材
+书号-00000001
+单价：20.00
+书2：
+书名-大学语文
+种类-教材
+书号-00000002
+单价-35.50
+书3：
+书名-悲惨世界
+种类-外国文学
+书号-00000003
+单价-25.20
+书4：
+书名-西游记
+种类-中国文学
+书号-00000004
+单价-32.75
+书5：
+书名-斗破苍穹
+种类-玄幻网文小说
+
+5个折扣
+折扣1：
+书号-00000001
+折扣-0.00
+折扣2：
+书号-00000002
+折扣-0.20
+折扣3：
+书号-00000003
+折扣-0.25
+折扣4：
+书号-00000004
+折扣-0.30
+折扣5：
+书号-00000005
+折扣-0.80
+
+4个客户
+客户1：
+客户编号-00000001
+姓名-门天宇
+联系电话-18527360255
+收货地址-南开大学津南校区学1公寓303室1床
+客户2：
+客户编号-00000002
+姓名-管一鸣
+联系电话-13686241597
+收货地址-南开大学津南校区学1公寓504室2床
+客户3：
+客户编号-00000003
+姓名-冯晓雨
+联系电话-18522789325
+收货地址-南开大学津南校区学1公寓303室3床
+客户4：
+客户编号-00000004
+姓名-李宇琪
+联系电话-18873125604
+收货地址-南开大学津南校区学3公寓204室1床
+
+3个订单
+订单1：
+单号-00000001
+下单时间-2021.6.10
+客户编号-00000001
+订单2：
+单号-00000002
+下单时间-2021.6.22
+客户编号-00000002
+订单3：
+单号-00000003
+下单时间-2021.6.28
+客户编号-00000004
+
+5个订购：
+订购1：
+订单编号-00000001
+书号：00000001
+数量：500
+订购2：
+订单编号-00000001
+书号：00000002
+数量：50
+订购3：
+订单编号-00000001
+书号：00000005
+数量：300
+订购4：
+订单编号-00000002
+书号：00000004
+数量：2
+订购5：
+订单编号-00000003
+书号：00000003
+数量：15

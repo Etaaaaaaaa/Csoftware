@@ -1,0 +1,158 @@
+import java.util.HashMap;
+
+public class BOOKSTORE {
+    public class book {
+        private int book_id;
+        private String book_name;
+        private String book_kind;
+        private double book_price;
+
+        public double getBook_price() {
+            return book_price;
+        }
+
+        public int getBook_id() {
+            return book_id;
+        }
+
+        public String getBook_kind() {
+            return book_kind;
+        }
+
+        public String getBook_name() {
+            return book_name;
+        }
+
+        public void setBook_id(int book_id) {
+            this.book_id = book_id;
+        }
+
+        public void setBook_kind(String book_kind) {
+            this.book_kind = book_kind;
+        }
+
+        public void setBook_name(String book_name) {
+            this.book_name = book_name;
+        }
+
+        public void setBook_price(double book_price) {
+            this.book_price = book_price;
+        }
+    }
+    public class bookOrder {
+        private int book_id;
+        private int book_number;
+        private int order_number;
+
+        public int getBook_id() {
+            return book_id;
+        }
+
+        public void setBook_id(int book_id) {
+            this.book_id = book_id;
+
+        }
+
+        public int getBook_number() {
+            return book_number;
+        }
+
+        public void setBook_number(int book_number) {
+            this.book_number = book_number;
+        }
+
+        public int getOrder_number() {
+            return order_number;
+        }
+
+        public void setOrder_number(int order_number) {
+            this.order_number = order_number;
+        }
+    }
+    public class customer{
+        private int customer_id;
+        private String customer_name;
+        private String customer_address;
+        private String customer_telephone;
+
+        public int getCustomer_id() {
+            return customer_id;
+        }
+
+        public String getCustomer_address() {
+            return customer_address;
+        }
+
+        public String getCustomer_name() {
+            return customer_name;
+        }
+
+        public String getCustomer_telephone() {
+            return customer_telephone;
+        }
+
+        public void setCustomer_id(int customer_id) {
+            this.customer_id = customer_id;
+        }
+
+        public void setCustomer_address(String customer_address) {
+            this.customer_address = customer_address;
+        }
+
+        public void setCustomer_telephone(String customer_telephone) {
+            this.customer_telephone = customer_telephone;
+        }
+
+        public void setCustomer_name(String customer_name) {
+            this.customer_name = customer_name;
+        }
+    }
+    public class discount{
+        HashMap<book,Double> map;
+        public void update(book b,double discountRate) {
+            map.replace(b,discountRate);
+        }
+
+        public double getDiscountRate(book b) {
+            return map.get(b);
+        }
+        public void add(book b,double discountRate){
+           map.put(b,discountRate);
+        }
+        public void del(book b){
+            map.remove(b);
+        }
+
+    }
+    public class order{
+        int order_id; 			
+        String order_time; 		
+        int customer_id;
+
+        public void setOrder_id(int order_id) {
+            this.order_id = order_id;
+        }
+
+        public void setOrder_time(String order_time) {
+            this.order_time = order_time;
+        }
+
+        public void setCustomer_id(int customer_id) {
+            this.customer_id = customer_id;
+        }
+
+        public int getCustomer_id() {
+            return customer_id;
+        }
+
+        public int getOrder_id() {
+            return order_id;
+        }
+
+        public String getOrder_time() {
+            return order_time;
+        }
+
+      
+    }
+}
